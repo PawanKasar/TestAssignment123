@@ -3,7 +3,7 @@ package com.example.airittestdemo.Models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ContactListModel {
+public class OfflineContactListModel {
 
     @SerializedName("name")
     @Expose

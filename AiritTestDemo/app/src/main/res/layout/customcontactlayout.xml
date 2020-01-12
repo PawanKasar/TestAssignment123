@@ -14,7 +14,7 @@
             android:layout_below="@+id/lay1"
             android:layout_marginTop="1dp"
             android:orientation="horizontal"
-            android:id="@+id/tv_totalCountofdata"
+            android:id="@+id/viewForeground"
             android:weightSum="2">
 
 
