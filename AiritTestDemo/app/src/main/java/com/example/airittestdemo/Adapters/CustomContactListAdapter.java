@@ -86,18 +86,19 @@ public class CustomContactListAdapter extends RecyclerView.Adapter<CustomContact
 
     public void removeItem(int position) {
         if (Connectivity.isConnected(context)){
-            contactListModelArrayList.remove(position);
+            /*contactListModelArrayList.remove(position);
             // notify the item removed by position
             // to perform recycler view delete animations
             // NOTE: don't call notifyDataSetChanged()
-            notifyItemRemoved(position);
+            notifyItemRemoved(position);*/
         }else {
             offlinePojoArrayList.remove(position);
+            Log.e("customAdpter","Position "+position);
+            sqliteDBAdapter.removeSingleContact(String.valueOf(position));
             // notify the item removed by position
             // to perform recycler view delete animations
             // NOTE: don't call notifyDataSetChanged()
             notifyItemRemoved(position);
-            sqliteDBAdapter.deleteItemPositionWise(position);
         }
     }
 

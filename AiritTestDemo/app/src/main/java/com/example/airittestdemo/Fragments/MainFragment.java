@@ -110,7 +110,7 @@ public class MainFragment extends Fragment implements RecyclerItemTouchHelper.Re
         ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this);
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(rv_contactList);
 
-        ItemTouchHelper.SimpleCallback itemTouchHelperCallback1 = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT | ItemTouchHelper.UP) {
+        ItemTouchHelper.SimpleCallback itemTouchHelperCallback1 = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
                 return false;
@@ -270,57 +270,17 @@ public class MainFragment extends Fragment implements RecyclerItemTouchHelper.Re
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
         if (Connectivity.isConnected(getContext())){
-            /*if (viewHolder instanceof CartListAdapter.MyViewHolder) {
-                // get the removed item name to display it in snack bar
-                String name = cartList.get(viewHolder.getAdapterPosition()).getName();
 
-                // backup of removed item for undo purpose
-                final ClipData.Item deletedItem = cartList.get(viewHolder.getAdapterPosition());
-                final int deletedIndex = viewHolder.getAdapterPosition();
-
-                // remove the item from recycler view
-                mAdapter.removeItem(viewHolder.getAdapterPosition());
-
-                // showing snack bar with Undo option
-                Snackbar snackbar = Snackbar
-                        .make(coordinatorLayout, name + " removed from cart!", Snackbar.LENGTH_LONG);
-                snackbar.setAction("UNDO", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                        // undo is selected, restore the deleted item
-                        mAdapter.restoreItem(deletedItem, deletedIndex);
-                    }
-                });
-                snackbar.setActionTextColor(Color.YELLOW);
-                snackbar.show();
-            }*/
         }else {
             if (viewHolder instanceof CustomContactListAdapter.CustomViewHolder) {
                 // get the removed item name to display it in snack bar
                 String name = offlinePojoArrayList.get(viewHolder.getAdapterPosition()).getName();
 
                 // backup of removed item for undo purpose
-                /*final Item deletedItem = offlinePojoArrayList.get(viewHolder.getAdapterPosition());
-                final int deletedIndex = viewHolder.getAdapterPosition();*/
 
                 // remove the item from recycler view
                 customContactListAdapter.removeItem(viewHolder.getAdapterPosition());
                 customContactListAdapter.notifyDataSetChanged();
-
-                // showing snack bar with Undo option
-                /*Snackbar snackbar = Snackbar
-                        .make(parentLayout, name + " removed from cart!", Snackbar.LENGTH_LONG);*/
-                /*snackbar.setAction("UNDO", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                        // undo is selected, restore the deleted item
-                        mAdapter.restoreItem(deletedItem, deletedIndex);
-                    }
-                });*/
-                /*snackbar.setActionTextColor(Color.YELLOW);
-                snackbar.show();*/
             }
         }
     }

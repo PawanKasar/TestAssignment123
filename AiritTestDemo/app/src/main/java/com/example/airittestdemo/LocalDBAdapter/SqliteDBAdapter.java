@@ -101,8 +101,27 @@ public class SqliteDBAdapter extends SQLiteOpenHelper {
         return resultSet;
     }
 
-    public boolean deleteItemPositionWise(int id)
+    /*public boolean deleteItemPositionWise(String id)
     {
-        return sqLiteDatabase.delete("DEMOCONTACTLISTTABLE", id + "=" + id,null) > 0;
+        Log.e("Db","Delete "+id);
+        //return sqLiteDatabase.delete("DEMOCONTACTLISTTABLE", id + "=" + id,null) > 0;
+        return sqLiteDatabase.delete("DEMOCONTACTLISTTABLE", "id" + "=?", new String[]{id});
+    }*/
+
+    /**
+     * Remove a contact from database by id
+     *
+     * @param id to remove
+     */
+    public void removeSingleContact(String id) {
+        //Open the database
+        SQLiteDatabase database = this.getWritableDatabase();
+
+        //Execute sql query to remove from database
+        //NOTE: When removing by String in SQL, value must be enclosed with ''
+        database.execSQL("DELETE FROM " + "DEMOCONTACTLISTTABLE" + " WHERE " + "id" + "= '" + id + "'");
+
+        //Close the database
+        database.close();
     }
 }
